@@ -1,6 +1,7 @@
 ---
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
+title: OroshiX
 ---
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
