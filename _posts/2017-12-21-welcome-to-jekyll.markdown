@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title:  "Welcome to Jekyll!"
 date:   2017-12-21 18:45:11 +0100
 categories: jekyll update
