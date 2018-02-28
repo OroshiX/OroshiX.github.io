@@ -28,7 +28,8 @@ github_username:  OroshiX
 github: [metadata]
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-architect
+#theme: jekyll-theme-architect
+version: 0
 plugins:
   - jekyll-feed
   - jekyll-paginate
@@ -37,11 +38,27 @@ plugins:
 #  src: '/js/mermaid.min.js'
 paginate: 5
 paginate_path: "/blog/page:num/"
-
-# Permalinks
-#
-# Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
+sass:
+  style: compressed
+  sass_dir: _scss
+
+# Navigation (2nd level links supported)
+nav:
+  Home:
+    - '/'
+  Blog:
+    - '/blog/'
+    - { Categories: '/blog/categories/' }
+    - { Tags: '/blog/tags/' }
+  About:
+    - '/about/'
+  Github Project:
+    - 'http://oroshix.github.io/'
+
+# Where are tags and categories displayed
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
 
 defaults:
   -
