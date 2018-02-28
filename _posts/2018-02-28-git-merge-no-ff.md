@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How not to fast-forward merges in git?"
-date:   2018-02-27 14:40:11 +0100
+date:   2018-02-28 15:28:51 +0100
 categories: git
 tags: git merge no-ff
 ---
@@ -40,3 +40,7 @@ git merge --no-ff zoom
 
 And tadaaa! You have a real merge, and your `zoom` branch now stands out in your history: you know which commits were in 
 the zoom branch.
+
+See the image below from [nvie post](http://nvie.com/posts/a-successful-git-branching-model/) to better understand the difference.
+
+![Difference between ff and no ff]({{ "/assets/img/merge-ff.png" | absolute_url }})
