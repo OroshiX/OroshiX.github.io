@@ -1,8 +1,9 @@
 ---
 layout: page
-title:  "How to change the author and committer name/email of multiple commits in git?"
+title:  "How to change the author (committer name/email) of multiple commits in git?"
 date:   2018-02-27 14:40:11 +0100
-categories: git commit
+categories: git
+tags: git commit
 ---
 
 ```bash
