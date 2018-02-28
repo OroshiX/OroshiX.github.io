@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title:  "How to change the author (committer name/email) of multiple commits in git?"
 date:   2018-02-27 14:40:11 +0100
 categories: git

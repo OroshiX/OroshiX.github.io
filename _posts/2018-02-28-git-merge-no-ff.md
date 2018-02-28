@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title:  "How not to fast-forward merges in git?"
 date:   2018-02-27 14:40:11 +0100
 categories: git
