@@ -17,12 +17,12 @@ title: OroshiX
 tagline: 'Personal site'
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is where I will put my CV, experiences, and other things...
+  This is where I will put my CV, experiences, and blog posts...
 #  Write an awesome description for your new site here. You can edit this
 #  line in _config.yml. It will appear in your document head meta (for
 #  Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://oroshix.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Oroshi_X
 github_username:  OroshiX
 github: [metadata]
@@ -54,11 +54,13 @@ nav:
   About:
     - '/about/'
   Github Project:
-    - 'http://oroshix.github.io/'
+    - 'https://github.com/OroshiX/OroshiX.github.io'
 
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
+
+disqus_short_name: 'oroshix' # leave blank if you don't want disqus
 
 defaults:
   -

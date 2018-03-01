@@ -14,7 +14,8 @@
         <div class="container">
           <h3 class="masthead-title">
             <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-            <small>{{ site.tagline }}</small>
+            <small>{{ site.tagline }}
+              and <a href="{{ site.baseurl }}/blog" title="Blog">Blog</a></small>
           </h3>
         </div>
       </div>
@@ -43,5 +44,9 @@
         }, false);
       })(document);
     </script>
+
+    {% if site.disqus_short_name %}
+    <script id="dsq-count-scr" src="//{{ site.disqus_short_name }}.disqus.com/count.js" async></script>
+    {% endif %}
   </body>
 </html>
