@@ -6,6 +6,14 @@ categories: git
 tags: git merge no-ff
 ---
 
+## TL;DR
+```bash
+git merge --no-ff zoom
+```
+
+<!-- more -->
+
+## Full story
 Sometimes, you make a branch just for clarity purpose: for example, you want to add a zoom capacity to your application, so
 you create a new branch called `zoom`, and you go to that branch.
 

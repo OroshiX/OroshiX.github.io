@@ -21,4 +21,3 @@ git commit --amend --reset-author --no-edit
 # And continue the rebase until all commits are amended
 git rebase --continue
 ```
-
