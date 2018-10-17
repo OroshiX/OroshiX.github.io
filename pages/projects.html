@@ -1,0 +1,53 @@
+---
+permalink: /projects/
+layout: page
+title: Projects
+---
+<div class="container-fluid">
+    {% for project in site.data.projects.projects %}
+    <div class="col-md-3 col-sm-4 col-xs-6">
+        <div class="panel card">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    {{ project.name }}
+                    {% if project.pro %}
+                    <span class="badge badge-carre pro">PRO</span>
+                    {% else %}
+                    <span class="badge badge-carre perso">PERSO</span>
+                    {% endif %}
+                </h3>
+            </div>
+            {% if project.images %}
+            <div id="carousel_{{project.id}}" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel_{{project.id}}" data-slide-to="{% increment counter %}"></li>
+                </ol>
+                <div class="carousel-inner">
+                    {% for img in project.images %}
+                    <div class="item">
+                        <div class="img-crop-container">
+                            <img src="{{img.url}}" style="width: 100%;" class="img-crop" alt="{{img.alt}}">
+                        </div>
+                        <div class="carousel-caption"><h3>{{img.name}}</h3>
+                        <p>{{img.description}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="panel-body">{{project.description}}</div>
+            <div class="panel-footer">
+                {% if project.tags %}
+                {% for tag in project.tags %}
+                <span class="badge">{{tag.name}}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<ul>
+</ul>

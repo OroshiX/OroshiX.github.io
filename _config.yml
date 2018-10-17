@@ -55,6 +55,8 @@ nav:
     - { Tags: '/blog/tags/' }
   About:
     - '/about/'
+  Projects:
+    - '/projects'
   Github Project:
     - 'https://github.com/OroshiX/OroshiX.github.io'
 

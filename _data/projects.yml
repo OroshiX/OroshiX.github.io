@@ -1,0 +1,31 @@
+projects:
+  - name: "RFF/SNCF - Android Development and Fullstack"
+    id: 1
+    description: "Creation of an application to ease technicians' maintenance work, with the help of forms for online and offline usage"
+    images:
+      - url: https://mygodgivenanalogies.files.wordpress.com/2016/07/18453452-floral-initial-capital-letter-e-stock-vector1.jpg
+        name: Letter E
+        alt: Letter E
+        description: Just a test
+    pro: true
+    tags:
+      - name: android
+      - name: angular2
+      - name: spring
+      - name: maven
+  - name: "BNP - Fullstack development"
+    id: 2
+    description: "Development of MyFundMatch, a professional social network to connect funds owners, buyers and providers"
+    pro: true
+    tags:
+      - name: RxJava
+      - name: Java
+      - name: JPA
+  - name: "Depenses"
+    id: 3
+    description: ""
+    pro: false
+    tags:
+      - name: Heroku
+      - name: android
+      - name: REST
