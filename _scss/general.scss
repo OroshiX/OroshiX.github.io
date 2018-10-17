@@ -26,3 +26,11 @@ pre {
 .text-center {
   text-align: center;
 }
+
+body :not(.panel,.panel-heading,.panel-body,.panel-footer) {
+  font-size: 20px;
+}
+
+.container.content {
+  max-width: none;
+}
