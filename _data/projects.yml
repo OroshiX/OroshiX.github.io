@@ -21,11 +21,18 @@ projects:
       - name: RxJava
       - name: Java
       - name: JPA
-  - name: "Depenses"
+  - name: "My expenses"
     id: 3
-    description: ""
+    description: "Android application and heroku server in order to manage home expenses between several people"
     pro: false
     tags:
       - name: Heroku
       - name: android
       - name: REST
+  - name: Pentatonic
+    id: 4
+    description: "Logical grid game developped for Android"
+    pro: false
+    tags:
+      - name: Android
+      - name: game
