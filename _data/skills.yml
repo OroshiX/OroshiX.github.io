@@ -1,0 +1,17 @@
+programming:
+  - name: Java
+    percent: 95
+  - name: Kotlin
+    percent: 70
+  - name: Angular
+    percent: 60
+  - name: Android
+    percent: 98
+
+language:
+  - name: French
+    percent: 100
+  - name: English
+    percent: 80
+  - name: Spanish
+    percent: 35
