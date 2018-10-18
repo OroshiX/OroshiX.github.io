@@ -1,7 +1,14 @@
 ---
-layout: page
+layout: biography
 title: About
+encadreTitle: OroshiX
+encadreSubtitle: Passionate engineer
+company: CS
+#email: toto@tata.com
+twitter: Oroshi_X
+github: OroshiX
 ---
 
-I'm just passionate about programming.  
-You'll find here a little bit of everything, as it mainly serves me as a reminder of things I think are worth keeping.
+OroshiX is an Android expert, passionate about everything programming related.  
+
+You'll find here a little bit of everything, things about OroshiX, and things that are worth keeping.
