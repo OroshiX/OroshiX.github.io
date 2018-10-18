@@ -3,9 +3,10 @@ permalink: /projects/
 layout: page
 title: Projects
 ---
-<div class="container-fluid">
+
+<section id="projects">
     {% for project in site.data.projects.projects %}
-    <div class="col-md-3 col-sm-4 col-xs-6">
+    <div class="project">
         <div class="panel card">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -21,16 +22,18 @@ title: Projects
             <div id="carousel_{{project.id}}" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel_{{project.id}}" data-slide-to="{% increment counter %}"></li>
+                    <li data-target="#carousel_{{project.id}}"
+                        data-slide-to="{% increment counter %}"></li>
                 </ol>
                 <div class="carousel-inner">
                     {% for img in project.images %}
                     <div class="item">
                         <div class="img-crop-container">
-                            <img src="{{img.url}}" style="width: 100%;" class="img-crop" alt="{{img.alt}}">
+                            <img src="{{img.url}}" style="width: 100%;" class="img-crop"
+                                 alt="{{img.alt}}">
                         </div>
                         <div class="carousel-caption"><h3>{{img.name}}</h3>
-                        <p>{{img.description}}</p>
+                            <p>{{img.description}}</p>
                         </div>
                     </div>
                     {% endfor %}
@@ -48,6 +51,4 @@ title: Projects
         </div>
     </div>
     {% endfor %}
-</div>
-<ul>
-</ul>
+</section>
