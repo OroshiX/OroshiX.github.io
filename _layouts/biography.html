@@ -79,10 +79,9 @@ layout: default
     </div>
 </div>
 <script>
-    let divSkills = $('#skills');
-
-    for (let i = 1; i <= divSkills.childElementCount; i++) {
-        let divSk = divSkills.find(':nth-child(' + i + ')');
+    let divSkills = jQuery('#skills');
+    divSkills.children().each(function (i, divSk) {
+        console.log(divSk);
         Highcharts.chart(
             {
                 chart: {
@@ -99,7 +98,7 @@ layout: default
                     enabled: false
                 },
                 subtitle: {
-                    text: divSk.data('percent'),
+                    text: $(divSk).data('percent'),
                     verticalAlign: 'middle',
                     y: 12,
                     style: {
@@ -108,7 +107,7 @@ layout: default
                     }
                 },
                 title: {
-                    text: divSk.data('code'),
+                    text: $(divSk).data('code'),
                     y: 25,
                     style: {
                         fontSize: '36px'
@@ -130,14 +129,14 @@ layout: default
                     }
                 },
                 series: [{
-                    name: divSk.data('name'),
+                    name: $(divSk).data('name'),
                     data: [
-                        ['skill', divSk.data('percent')],
-                        ['o', 100 - divSk.data('percent')]
+                        ['skill', $(divSk).data('percent')],
+                        ['o', 100 - $(divSk).data('percent')]
                     ],
                     enableMouseTracking: false
                 }]
             }
         )
-    }
+    });
 </script>
