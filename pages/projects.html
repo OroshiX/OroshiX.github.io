@@ -1,6 +1,6 @@
 ---
 permalink: /projects/
-layout: page
+layout: page-larger
 title: Projects
 ---
 
@@ -44,7 +44,7 @@ title: Projects
             <div class="panel-footer">
                 {% if project.tags %}
                 {% for tag in project.tags %}
-                <span class="badge">{{tag.name}}</span>
+                <span class="badge">{{tag.name }}</span>
                 {% endfor %}
                 {% endif %}
             </div>
@@ -52,3 +52,11 @@ title: Projects
     </div>
     {% endfor %}
 </section>
+<script>
+    $('#projects').masonry({
+        itemSelector: '.project',
+        columnWidth: '.project',
+        percentPosition: true,
+        gutter: 15
+    })
+</script>

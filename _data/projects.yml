@@ -10,7 +10,7 @@ projects:
     pro: true
     tags:
       - name: android
-      - name: angular2
+      - name: angular 2
       - name: spring
       - name: maven
   - name: "BNP - Fullstack development"
@@ -36,3 +36,10 @@ projects:
     tags:
       - name: Android
       - name: game
+  - name: Test
+    id: 5
+    description: "Test this time a long long test for testing purposes"
+    pro: false
+    tags:
+      - name: toto
+      - name: tata
