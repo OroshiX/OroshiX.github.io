@@ -62,56 +62,75 @@ layout: default
                 {% endfor %}
             </div>
             <div class="col-sm-4">
-                <div class="row">
+                <div class="row align-items-start" id="languages">
+                    {% assign counter = 0 %}
+                    {% for lang in site.data.skills.language %}
                     <div class="col-sm-3">
-                        <div class="skill-name">English</div>
+                        <div class="skill-name">{{ lang.name }}</div>
                     </div>
                     <div class=" col-sm-8 col-sm-offset-1 ">
                         <div class="progress progress-striped">
-                            <div class="progress-bar progress-bar-{{ site.data.skills.colors[counter] }}"
-                                 style="width:30%">
+                            {% assign index = counter | modulo: 3 %}
+                            {% assign x = site.data.skills.colors[index].name %}
+                            {% assign class = "progress-bar-" | append: x %}
+                            <div class=" {{ class }} progress-bar"
+                                 data-percent="{{lang.percent}}">
                             </div>
+                            {% assign counter = counter | plus: 1 %}
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    let divSkills = $('#skills');
+    let divLanguages = jQuery("#languages");
+    console.log(divLanguages);
+    divLanguages.find(".progress-bar").each(function (i, divLang) {
+        console.log(divLang);
+        let percent = $(divLang).data('percent');
+        $(divLang).attr('style', 'width: ' + percent + '%');
+    });
 
-    for (let i = 1; i <= divSkills.childElementCount; i++) {
-        let divSk = divSkills.find(':nth-child(' + i + ')');
-        Highcharts.chart(
+    let divSkills = jQuery('#skills');
+    divSkills.children().each(function (i, divSk) {
+        console.log(divSk);
+        Highcharts.chart('skill_' + i,
             {
                 chart: {
-                    renderTo: 'skill_' + i,
                     type: 'pie',
                     options3d: {
                         enabled: true,
                         alpha: 35
                     },
+                    backgroundColor: '#ffffff00',
                     spacingBottom: 65,
                     height: 200
                 },
                 credits: {
                     enabled: false
                 },
+                exporting: {
+                    enabled: false
+                },
                 subtitle: {
-                    text: divSk.data('percent'),
+                    text: $(divSk).data('percent') + '%',
                     verticalAlign: 'middle',
                     y: 12,
                     style: {
                         color: '#4572A7',
-                        fontSize: '25px'
+                        fontSize: '22px',
+                        fontFamily: "'Courier New', monospace"
                     }
                 },
                 title: {
-                    text: divSk.data('code'),
+                    text: $(divSk).data('name'),
                     y: 25,
                     style: {
-                        fontSize: '36px'
+                        fontSize: '25px',
+                        fontFamily: "'Stoke', serif"
                     },
                     verticalAlign: 'bottom'
                 },
@@ -130,14 +149,15 @@ layout: default
                     }
                 },
                 series: [{
-                    name: divSk.data('name'),
+                    name: $(divSk).data('name'),
                     data: [
-                        ['skill', divSk.data('percent')],
-                        ['o', 100 - divSk.data('percent')]
+                        ['skill', $(divSk).data('percent')],
+                        ['o', 100 - $(divSk).data('percent')]
                     ],
                     enableMouseTracking: false
                 }]
             }
-        )
-    }
+        );
+
+    });
 </script>

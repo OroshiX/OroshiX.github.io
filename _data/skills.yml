@@ -19,3 +19,9 @@ language:
     percent: 80
   - name: Spanish
     percent: 35
+
+colors:
+  - name: info
+  - name: danger
+  - name: warning
+  - name: success

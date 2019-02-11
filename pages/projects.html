@@ -1,13 +1,13 @@
 ---
 permalink: /projects/
-layout: page
+layout: page-larger
 title: Projects
 ---
 
 <section id="projects">
     {% for project in site.data.projects.projects %}
     <div class="project">
-        <div class="panel card">
+        <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
                     {{ project.name }}
@@ -44,7 +44,7 @@ title: Projects
             <div class="panel-footer">
                 {% if project.tags %}
                 {% for tag in project.tags %}
-                <span class="badge">{{tag.name}}</span>
+                <span class="badge">{{tag.name }}</span>
                 {% endfor %}
                 {% endif %}
             </div>
@@ -52,3 +52,11 @@ title: Projects
     </div>
     {% endfor %}
 </section>
+<script>
+    $('#projects').masonry({
+        itemSelector: '.project',
+        columnWidth: '.project',
+        percentPosition: true,
+        gutter: 15
+    })
+</script>

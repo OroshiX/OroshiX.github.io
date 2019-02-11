@@ -2,17 +2,18 @@
   /* Prevent vertical gaps */
   //line-height: 0;
 
-  -webkit-column-count: 5;
-  -moz-column-count: 5;
-  column-count: 5;
-  -webkit-column-gap: 20px;
-  -moz-column-gap: 20px;
-  column-gap: 20px;
+  //-webkit-column-count: 5;
+  //-moz-column-count: 5;
+  //column-count: 5;
+  //-webkit-column-gap: 20px;
+  //-moz-column-gap: 20px;
+  //column-gap: 20px;
+
   .project {
-    width: 100% !important;
-    height: auto !important;
+    width: 90%;
     .badge {
       background-color: $theme-color;
+      text-transform: capitalize;
     }
     .badge-carre {
       font-size: 12px;
@@ -37,8 +38,25 @@
       font-size: large;
     }
   }
+
+  @media (min-width: 24em) {
+    .project {
+      width: 45%;
+    }
+  }
+  @media (min-width: 38em) {
+    .project {
+      width: 30%;
+    }
+  }
+  @media (min-width: 56em) {
+    .project {
+      width: 17%;
+    }
+  }
 }
 
+/*
 @media (max-width: 1200px) {
   #projects {
     -webkit-column-count: 4;
@@ -68,5 +86,14 @@
     -webkit-column-count: 1;
     -moz-column-count: 1;
     column-count: 1;
+  }
+}
+
+*/
+#languages {
+  .progress {
+    height: 15px;
+    margin-bottom: 0;
+    margin-top: 12px;
   }
 }
