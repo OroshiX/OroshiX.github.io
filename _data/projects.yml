@@ -36,10 +36,9 @@ projects:
     tags:
       - name: Android
       - name: game
-  - name: Test
+  - name: Pentatonic in Unity
     id: 5
-    description: "Test this time a long long test for testing purposes"
+    description: "Same as Pentatonic, in order to learn Unity development"
     pro: false
     tags:
-      - name: toto
-      - name: tata
+      - name: Unity3D
