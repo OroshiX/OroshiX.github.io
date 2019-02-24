@@ -1,0 +1,12 @@
+.three-columns {
+  display: flex;
+  .panel-left {
+    flex: 33%;
+  }
+  .panel-right {
+    flex: 33%;
+  }
+  #penta-representation {
+    flex: 33%;
+  }
+}
