@@ -1,4 +1,25 @@
 projects:
+  - name: "Upside Dark"
+    id: 8
+    description: "With a newly formed team of formerly strangers, designed and developed a game in 48 hours, inspired by a specific theme"
+    pro: false
+    tags:
+      - name: unity
+      - name: development lead
+  - name: "Moon and Garden - Android development"
+    id: 6
+    description: "Evolved and published an application on the Google Play Store, including features such as In App Billing, Google Drive backups, note taking, community forum, and bug fixing"
+    pro: true
+    tags:
+      - name: android
+      - name: firebase
+      - name: google drive
+  - name: "Solar Voyager VR - Unity 3D development"
+    id: 7
+    description: "Improved a VR Unity3D mobile application allowing the user to travel across the solar system while discovering information about its planets"
+    pro: true
+    tags:
+      - name: unity3D
   - name: "RFF/SNCF - Android Development and Fullstack"
     id: 1
     description: "Creation of an application to ease technicians' maintenance work, with the help of forms for online and offline usage"
@@ -21,6 +42,7 @@ projects:
       - name: RxJava
       - name: Java
       - name: JPA
+      - name: angular 2
   - name: "My expenses"
     id: 3
     description: "Android application and heroku server in order to manage home expenses between several people"
