@@ -1,6 +1,6 @@
 ---
 permalink: /pentatonic/
-layout: page
+layout: page-larger
 title: Pentatonic editor
 ---
 <script src="../scripts/dist/bundle.js"></script>
@@ -8,9 +8,9 @@ title: Pentatonic editor
 
 <div id="DrawingBoard" style="padding-top:25px;text-align:center" class="three-columns">
     <div class="panel-left" id="penta-text">
-        <input type="text" value="toto" title="penta"/>
+        <input type="text" value="enter pentatonic with .penta format here" title="penta" id="text-penta"/>
         <br/>
-        <input type="button" value="do" onClick=""/>
+        <input type="button" id="btn-convert" value="Convert"/>
     </div>
     <div class="panel-right" id="penta-json">
         tata

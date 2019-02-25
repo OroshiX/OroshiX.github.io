@@ -1,48 +1,52 @@
+import {Styles} from "./Styles";
+import {PentaJson} from "./pentaJson";
+import {PentaWarningError} from "./PentaWarningError";
+
 export class Playground {
     private canvasElement: HTMLCanvasElement;
-    private context: any;
-    private canvas: any;
-    private common: any;
-    private groundCorner: any;
+    private context: CanvasRenderingContext2D;
 
-    constructor(canvasElement: HTMLCanvasElement, context: any, canvas: any, common: any, groundCorner: any) {
+    private styles: Styles;
+
+    constructor(canvasElement: HTMLCanvasElement, context: CanvasRenderingContext2D, styles: Styles) {
         this.canvasElement = canvasElement;
+
         this.context = context;
-        this.canvas = canvas;
-        this.common = common;
-        this.groundCorner = groundCorner;
+        this.styles = styles;
     }
 
     setGroundStyles(): void {
-        this.canvasElement.setAttribute("width", this.canvas.width.toString());
-        this.canvasElement.setAttribute("height", this.canvas.height.toString());
-        this.canvasElement.style.border = "2px solid " + this.canvas.borderColor.White;
+        let width = this.canvasElement.width;
+        console.log("Width is " + width);
+        // this.canvasElement.setAttribute("width", "500");
+        // this.canvasElement.setAttribute("height", "500");
+        this.canvasElement.style.border = this.styles.borderWidth + "px solid " + this.styles.borderColor;
         this.canvasElement.style.margin = "auto 25px";
-        this.canvasElement.style.background = this.canvas.background.Default;
+        this.canvasElement.style.background = this.styles.background;
     }
 
     drawCenterSpot(xAxis: number, yAxis: number, radius: number) {
         this.context.beginPath();
         this.context.arc(xAxis, yAxis, radius, 0, 2 * Math.PI);
-        this.context.fillStyle = this.common.fillColor.Default;
+        this.context.fillStyle = this.styles.fillColor;
         this.context.fill();
-        this.context.lineWidth = this.common.lineWidth.Pixel2;
-        this.context.strokeStyle = this.common.borderColor;
+        this.context.lineWidth = this.styles.lineWidth;
+        this.context.strokeStyle = this.styles.borderColor;
         this.context.stroke();
     }
 
     drawCorner(xAxis: number, yAxis: number) {
         this.context.beginPath();
-        this.context.arc(xAxis, yAxis, this.groundCorner.radius, 0, 2 * Math.PI);
-        this.context.fillStyle = this.common.fillColor.Default;
+        this.context.arc(xAxis, yAxis, 10, 0, 2 * Math.PI);
+        this.context.fillStyle = this.styles.fillColor;
         this.context.fill();
-        this.context.lineWidth = this.common.lineWidth.Pixel2;
-        this.context.strokeStyle = this.common.borderColor;
+        this.context.lineWidth = this.styles.lineWidth;
+        this.context.strokeStyle = this.styles.borderColor;
         this.context.stroke();
     }
 
-    writeText(text: string, xAxis: number, yAxis: number, font: string = this.common.font.Default,
-              color: string = this.common.fillColor.White) {
+    writeText(text: string, xAxis: number, yAxis: number, font: string = this.styles.font.Default,
+              color: string = this.styles.textColor) {
         this.context.font = font;
         this.context.fillStyle = color;
         this.context.fillText(text, xAxis, yAxis);
@@ -54,8 +58,8 @@ export class Playground {
         this.context.moveTo(x1, y1);
         this.context.lineTo(x2, y2);
         this.context.stroke();
-        this.context.lineWidth = this.common.lineWidth;
-        this.context.fillStyle = this.common.fillColor.White;
+        this.context.lineWidth = this.styles.lineWidth;
+        this.context.fillStyle = this.styles.fillColor;
         this.context.fill();
     }
 
@@ -64,8 +68,8 @@ export class Playground {
         this.context.beginPath();
         this.context.moveTo(x1, y1);
         this.context.lineTo(x2, y2);
-        this.context.strokeStyle = this.common.fillColor.Orange;
-        this.context.lineWidth = this.common.lineWidth.Pixel1;
+        this.context.strokeStyle = this.styles.fillColor;
+        this.context.lineWidth = this.styles.lineWidth;
         this.context.stroke();
 
         let x2ofLine = x2;
@@ -81,8 +85,8 @@ export class Playground {
                 this.context.beginPath();
                 this.context.moveTo(x1, y1);
                 this.context.lineTo(x2, y2);
-                this.context.lineWidth = this.common.lineWidth.Pixel2;
-                this.context.strokeStyle = this.common.fillColor.Orange;
+                this.context.lineWidth = this.styles.lineWidth;
+                this.context.strokeStyle = this.styles.fillColor;
                 this.context.stroke();
             }
         }
@@ -97,10 +101,31 @@ export class Playground {
                 this.context.moveTo(x1, y1);
                 this.context.lineTo(x2, y2);
                 this.context.lineWidth = 2;
-                this.context.strokeStyle = this.common.fillColor.Orange;
+                this.context.strokeStyle = this.styles.fillColor;
                 this.context.stroke();
             }
         }
+
+    }
+
+    //Rectangular Area
+    drawRectangle(xAxis: number, yAxis: number, width: number, height: number) {
+        this.context.beginPath();
+        this.context.fillStyle = this.styles.fillColor;
+        this.context.fill();
+        this.context.fillRect(xAxis, yAxis, width, height);
+        this.context.lineWidth = this.styles.lineWidth;
+        this.context.strokeStyle = this.styles.borderColor;
+        this.context.strokeRect(xAxis, yAxis, width, height);
+    }
+
+    drawPentatonic(pentaWarningError: PentaWarningError) {
+        console.log("trying to draw: " + pentaWarningError);
+        console.log("errors: " + pentaWarningError.errors);
+        console.log("Warnings: " + pentaWarningError.warnings);
+        let pentatonic = pentaWarningError.penta;
+
+
 
     }
 }

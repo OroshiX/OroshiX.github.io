@@ -1,8 +1,10 @@
 import {Playground} from "./playground";
+import {Styles} from "./Styles";
+import {PentaWarningError} from "./PentaWarningError";
+import {Serializer} from "./serializer";
 
 let _height = 500;
 let _width = 1000;
-let x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 let canvas = {
     width: _width,
     height: _height,
@@ -46,14 +48,21 @@ let groundCorner = {
     radius: Math.ceil((canvas.height * 2) / 100)
 };
 let captionText = "";
+
 window.onload = function () {
+    let textEditPenta = document.getElementById("text-penta") as HTMLInputElement;
+    let buttonConvert = document.getElementById("btn-convert") as HTMLButtonElement;
+    buttonConvert.onclick = () => {
+        let penta: PentaWarningError = Serializer.serialize(textEditPenta.textContent);
+        ground.drawPentatonic(penta);
+    };
     let xPos = 0;
     let yPos = 0;
 
-    let canvasElt = document.getElementById("penta-representation") as HTMLCanvasElement;
-    let ctxt: CanvasRenderingContext2D = canvasElt.getContext("2d");
+    let canvasElement = document.getElementById("penta-representation") as HTMLCanvasElement;
+    let context2D: CanvasRenderingContext2D = canvasElement.getContext("2d");
 
-    let ground = new Playground(canvasElt, ctxt, canvas, common, groundCorner);
+    let ground = new Playground(canvasElement, context2D, new Styles(20, 20));
 
     ground.setGroundStyles();
     setTimeout(function () {
@@ -84,7 +93,7 @@ window.onload = function () {
                     captionText = "Team - A";
                     xPos = Math.ceil((canvas.width) / 4) - Math.ceil(captionText.length / 2);
                     yPos = 20;
-                    ground.writeText(captionText, xPos, yPos, common.font.Heading, "Yellow");
+                    ground.writeText(captionText, xPos, yPos, common.font.Heading);
                     // ground.drawPenaltyArc(penaltyArc.xPosition.TeamA, penaltyArc.yPosition, penaltyArc.radius);
                     // ground.drawPenaltyArea(penaltyArea.xPosition.TeamA, penaltyArea.yPosition);
                     // ground.drawGoalArea(goalArea.xPosition.TeamA, goalArea.yPositon);
@@ -96,7 +105,7 @@ window.onload = function () {
                         //Team*B
                         captionText = "Team - B";
                         xPos = canvas.width - canvas.width / 3.5;
-                        ground.writeText(captionText, xPos, yPos, common.font.Heading, "Yellow");
+                        ground.writeText(captionText, xPos, yPos, common.font.Heading);
                         // ground.drawPenaltyArc(penaltyArc.xPosition.TeamB, penaltyArc.yPosition, penaltyArc.radius);
                         // ground.drawPenaltyArea(penaltyArea.xPosition.TeamB, penaltyArea.yPosition);
                         // ground.drawGoalArea(goalArea.xPosition.TeamB, goalArea.yPositon);
@@ -110,7 +119,7 @@ window.onload = function () {
                             captionText = "Center Spot";
                             xPos = canvas.halfWidth + penaltyArc.radius * 2;
                             yPos = (canvas.height / 2) - 10;
-                            ground.writeText(captionText, xPos, yPos, common.font.Heading, "yellow");
+                            ground.writeText(captionText, xPos, yPos, common.font.Heading);
                         }, 500);
 
                     }, 500);
