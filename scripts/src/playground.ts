@@ -1,5 +1,4 @@
 import {Styles} from "./Styles";
-import {PentaJson} from "./pentaJson";
 import {PentaWarningError} from "./PentaWarningError";
 import {Pentatonic} from "./Pentatonic";
 
@@ -10,8 +9,8 @@ export class Playground {
     private styles: Styles;
 
     private cellSize: number;
-    private offsetX = 10;
-    private offsetY = 10;
+    private offsetX = 30;
+    private offsetY = 30;
     private totalWidth: number;
 
     constructor(canvasElement: HTMLCanvasElement, context: CanvasRenderingContext2D, styles: Styles) {
@@ -69,8 +68,8 @@ export class Playground {
         this.context.moveTo(x1, y1);
         this.context.lineTo(x2, y2);
         this.context.stroke();
-        this.context.lineWidth = this.styles.lineWidth;
-        this.context.fillStyle = this.styles.fillColor;
+        this.context.lineWidth = this.styles.borderWidth;
+        this.context.fillStyle = this.styles.borderColor;
         this.context.fill();
     }
 
@@ -129,6 +128,7 @@ export class Playground {
         this.context.strokeStyle = this.styles.lineColor;
         this.context.strokeRect(xAxis, yAxis, width, height);
     }
+
     drawRectangleBorderLine(xAxis: number, yAxis: number, width: number, height: number) {
         this.context.beginPath();
         this.context.fillStyle = this.styles.fillColor;
@@ -138,6 +138,7 @@ export class Playground {
         this.context.strokeStyle = this.styles.borderColor;
         this.context.strokeRect(xAxis, yAxis, width, height);
     }
+
     drawPentatonic(pentaWarningError: PentaWarningError, errors: Node, warnings: Node, success: Node) {
         console.log("trying to draw: ", pentaWarningError);
         console.log("errors: " + pentaWarningError.errors);
@@ -150,22 +151,53 @@ export class Playground {
             success.textContent = "";
         }
         let pentatonic = pentaWarningError.penta;
-        this.cellSize = (this.totalWidth- 2* this.offsetX) / pentatonic.columns;
+        this.cellSize = (this.totalWidth - 2 * this.offsetX) / pentatonic.columns;
         let heightCanvas = this.totalWidth * pentatonic.lines / pentatonic.columns;
         this.canvasElement.setAttribute("height", heightCanvas.toString());
 
         this.drawEachCell(pentatonic);
         // TODO draw penta
-
+        this.drawVerticalSeparations(pentatonic);
+        this.drawHorizontalSeparations(pentatonic);
     }
 
     private drawEachCell(pentatonic: Pentatonic) {
-        this.drawRectangleBorderLine(this.offsetX,this.offsetY,pentatonic.columns * this.cellSize, pentatonic.lines * this.cellSize);
+        this.drawRectangleBorderLine(this.offsetX, this.offsetY, pentatonic.columns * this.cellSize, pentatonic.lines * this.cellSize);
         for (let i = 0; i < pentatonic.lines; i++) {
             for (let j = 0; j < pentatonic.columns; j++) {
                 this.drawRectangleThinLine(this.offsetX + j * this.cellSize, this.offsetY + i * this.cellSize, this.cellSize, this.cellSize);
             }
         }
 
+    }
+
+    private drawVerticalSeparations(pentatonic: Pentatonic) {
+        for (let i = 0; i < pentatonic.lines; i++) {
+            for (let j = 1; j < pentatonic.columns; j++) {
+                if (pentatonic.cells[i][j].area.id != pentatonic.cells[i][j - 1].area.id) {
+                    console.log("(" + i + "," + (j - 1) + ") et (" + i + "," + j + ") ne sont PAS dans la meme zone ");
+                    this.drawLine(this.offsetX + j * this.cellSize,
+                        this.offsetY + i * this.cellSize,
+                        this.offsetX + j * this.cellSize,
+                        this.offsetY + (i + 1) * this.cellSize);
+                }else {
+                    console.log("(" + i + "," + (j - 1) + ") et (" + i + "," + j + ") SONT dans la meme zone ");
+                }
+            }
+
+        }
+    }
+
+    private drawHorizontalSeparations(pentatonic: Pentatonic) {
+        for (let j = 0; j < pentatonic.columns; j++) {
+            for (let i = 1; i < pentatonic.lines; i++) {
+                if (pentatonic.cells[i][j].area.id != pentatonic.cells[i - 1][j].area.id) {
+                    this.drawLine(this.offsetX + j * this.cellSize,
+                        this.offsetY + i * this.cellSize,
+                        this.offsetX + (j + 1) * this.cellSize,
+                        this.offsetY + i * this.cellSize);
+                }
+            }
+        }
     }
 }
