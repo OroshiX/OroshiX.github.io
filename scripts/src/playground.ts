@@ -1,6 +1,7 @@
 import {Styles} from "./Styles";
 import {PentaJson} from "./pentaJson";
 import {PentaWarningError} from "./PentaWarningError";
+import {Pentatonic} from "./Pentatonic";
 
 export class Playground {
     private canvasElement: HTMLCanvasElement;
@@ -8,16 +9,26 @@ export class Playground {
 
     private styles: Styles;
 
+    private cellSize: number;
+    private offsetX = 10;
+    private offsetY = 10;
+    private totalWidth: number;
+
     constructor(canvasElement: HTMLCanvasElement, context: CanvasRenderingContext2D, styles: Styles) {
         this.canvasElement = canvasElement;
+        this.totalWidth = this.canvasElement.width;
 
         this.context = context;
         this.styles = styles;
+
+        this.canvasElement.style.border = this.styles.borderWidth + "px solid " + this.styles.borderColor;
+        this.canvasElement.style.margin = "auto 25px";
+        this.canvasElement.style.background = this.styles.background;
+
     }
 
     setGroundStyles(): void {
-        let width = this.canvasElement.width;
-        console.log("Width is " + width);
+        console.log("Width is " + this.totalWidth);
         // this.canvasElement.setAttribute("width", "500");
         // this.canvasElement.setAttribute("height", "500");
         this.canvasElement.style.border = this.styles.borderWidth + "px solid " + this.styles.borderColor;
@@ -109,23 +120,52 @@ export class Playground {
     }
 
     //Rectangular Area
-    drawRectangle(xAxis: number, yAxis: number, width: number, height: number) {
+    drawRectangleThinLine(xAxis: number, yAxis: number, width: number, height: number) {
         this.context.beginPath();
         this.context.fillStyle = this.styles.fillColor;
         this.context.fill();
         this.context.fillRect(xAxis, yAxis, width, height);
         this.context.lineWidth = this.styles.lineWidth;
+        this.context.strokeStyle = this.styles.lineColor;
+        this.context.strokeRect(xAxis, yAxis, width, height);
+    }
+    drawRectangleBorderLine(xAxis: number, yAxis: number, width: number, height: number) {
+        this.context.beginPath();
+        this.context.fillStyle = this.styles.fillColor;
+        this.context.fill();
+        this.context.fillRect(xAxis, yAxis, width, height);
+        this.context.lineWidth = this.styles.borderWidth;
         this.context.strokeStyle = this.styles.borderColor;
         this.context.strokeRect(xAxis, yAxis, width, height);
     }
-
-    drawPentatonic(pentaWarningError: PentaWarningError) {
-        console.log("trying to draw: " + pentaWarningError);
+    drawPentatonic(pentaWarningError: PentaWarningError, errors: Node, warnings: Node, success: Node) {
+        console.log("trying to draw: ", pentaWarningError);
         console.log("errors: " + pentaWarningError.errors);
         console.log("Warnings: " + pentaWarningError.warnings);
+        errors.textContent = pentaWarningError.errors.join("<br>");
+        warnings.textContent = pentaWarningError.warnings.join("<br>");
+        if (pentaWarningError.errors.length == 0 && pentaWarningError.warnings.length == 0) {
+            success.textContent = "Success!";
+        } else {
+            success.textContent = "";
+        }
         let pentatonic = pentaWarningError.penta;
+        this.cellSize = (this.totalWidth- 2* this.offsetX) / pentatonic.columns;
+        let heightCanvas = this.totalWidth * pentatonic.lines / pentatonic.columns;
+        this.canvasElement.setAttribute("height", heightCanvas.toString());
 
+        this.drawEachCell(pentatonic);
+        // TODO draw penta
 
+    }
+
+    private drawEachCell(pentatonic: Pentatonic) {
+        this.drawRectangleBorderLine(this.offsetX,this.offsetY,pentatonic.columns * this.cellSize, pentatonic.lines * this.cellSize);
+        for (let i = 0; i < pentatonic.lines; i++) {
+            for (let j = 0; j < pentatonic.columns; j++) {
+                this.drawRectangleThinLine(this.offsetX + j * this.cellSize, this.offsetY + i * this.cellSize, this.cellSize, this.cellSize);
+            }
+        }
 
     }
 }

@@ -1,12 +1,20 @@
 .three-columns {
   display: flex;
   .panel-left {
-    flex: 33%;
+    flex: 50%;
   }
   .panel-right {
-    flex: 33%;
+    flex: 50%;
   }
   #penta-representation {
-    flex: 33%;
+  }
+  #errors {
+    color: #9f0800;
+  }
+  #warnings {
+    color: #df8000;
+  }
+  #success{
+    color: #0c8d3a;
   }
 }

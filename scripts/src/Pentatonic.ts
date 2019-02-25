@@ -21,6 +21,7 @@ export class Pentatonic {
         this.columns = columns;
         this.cells = [];
         this.diffOnes = [];
+        this.sisters = [];
     }
 
     fillAreaSize() {
@@ -33,7 +34,13 @@ export class Pentatonic {
     }
 
     private cellArray(): Array<Cell> {
-        return [].concat.apply([], this.cells);
+        let res: Array<Cell> = [];
+        for (let row of this.cells) {
+            for (let cell of row) {
+                res.push(cell);
+            }
+        }
+        return res;
     }
 
     private getAllAreas(): Set<Area> {

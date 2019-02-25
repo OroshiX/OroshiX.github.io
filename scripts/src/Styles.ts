@@ -3,6 +3,7 @@ export class Styles {
     heightCell: number;
     background: string;
     borderColor: string;
+    lineColor: string;
     lineWidth: number;
     borderWidth: number;
     fillColor: string;
@@ -12,12 +13,13 @@ export class Styles {
     constructor(width: number, height: number) {
         this.widthCell = width;
         this.heightCell = height;
-        this.background = "#fff0e6";
+        this.background = "#9a2424";
         this.borderColor = "#343653";
         this.lineWidth = 2;
         this.borderWidth = 10;
-        this.fillColor = "#9a2424";
+        this.fillColor = "#fff0e6";
         this.textColor = "#00639f";
+        this.lineColor = "#6dc2ff";
         this.font = {Default: "12px 'Segoe UI',Arial,sans-serif", Heading: "14px 'Segoe UI',Arial,sans-serif"};
     }
 

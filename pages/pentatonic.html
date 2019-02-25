@@ -8,14 +8,28 @@ title: Pentatonic editor
 
 <div id="DrawingBoard" style="padding-top:25px;text-align:center" class="three-columns">
     <div class="panel-left" id="penta-text">
-        <input type="text" value="enter pentatonic with .penta format here" title="penta" id="text-penta"/>
+        <textarea type="text" title="penta" id="text-penta" rows="18" cols="40">MonsieurO
+3 3
+aab
+ccb
+ccb
+1,2,1
+a,1,2
+a,2,2
+-1,2,1,1</textarea>
         <br/>
         <input type="button" id="btn-convert" value="Convert"/>
     </div>
-    <div class="panel-right" id="penta-json">
-        tata
-    </div>
-    <canvas id="penta-representation">
+    <div class="panel-right">
+        <canvas id="penta-representation">
 
-    </canvas>
+        </canvas>
+        <div id="errors">
+
+        </div>
+        <div id="warnings">
+
+        </div>
+        <div id="success"></div>
+    </div>
 </div>
