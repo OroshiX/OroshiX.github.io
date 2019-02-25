@@ -6,7 +6,7 @@ import {Diff} from "./diff";
 import {Sister} from "./sister";
 
 export class Serializer {
-    private static minLines: number = 12;
+    private static minLines: number = 2;
 
     static serialize(textContent: string): PentaWarningError {
         let pentaWarningError = new PentaWarningError();
@@ -14,7 +14,7 @@ export class Serializer {
         let lines = textContent.split("\n");
         if (lines.length < this.minLines) {
             pentaWarningError.addError("Text for penta should contain: \n" +
-                "author, nbLine nbCols, ");
+                "author, nbLine nbCols, penta");
             return pentaWarningError;
         }
         penta.author = textContent[0];
@@ -27,6 +27,10 @@ export class Serializer {
         }
         penta.lines = lineCol[0];
         penta.columns = lineCol[1];
+        if (lines.length < this.minLines + penta.lines) {
+            pentaWarningError.addError("You didn't provide a pentatonic with " + penta.lines + " lines");
+            return pentaWarningError;
+        }
         this.fillAreas(pentaWarningError, lines, 2);
         this.fillEnonce(pentaWarningError, lines, 2 + penta.lines);
 
