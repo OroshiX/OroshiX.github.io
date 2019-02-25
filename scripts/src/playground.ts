@@ -55,7 +55,7 @@ export class Playground {
         this.context.stroke();
     }
 
-    writeText(text: string, xAxis: number, yAxis: number, font: string = this.styles.font.Default,
+    writeText(text: string, xAxis: number, yAxis: number, font: string = this.styles.font.Heading,
               color: string = this.styles.textColor) {
         this.context.font = font;
         this.context.fillStyle = color;
@@ -65,11 +65,11 @@ export class Playground {
 
     drawLine(x1: number, y1: number, x2: number, y2: number) {
         this.context.beginPath();
+        this.context.lineWidth = this.styles.borderWidth;
+        this.context.fillStyle = this.styles.borderColor;
         this.context.moveTo(x1, y1);
         this.context.lineTo(x2, y2);
         this.context.stroke();
-        this.context.lineWidth = this.styles.borderWidth;
-        this.context.fillStyle = this.styles.borderColor;
         this.context.fill();
     }
 
@@ -159,6 +159,7 @@ export class Playground {
         // TODO draw penta
         this.drawVerticalSeparations(pentatonic);
         this.drawHorizontalSeparations(pentatonic);
+        this.drawAllClues(pentatonic);
     }
 
     private drawEachCell(pentatonic: Pentatonic) {
@@ -168,7 +169,6 @@ export class Playground {
                 this.drawRectangleThinLine(this.offsetX + j * this.cellSize, this.offsetY + i * this.cellSize, this.cellSize, this.cellSize);
             }
         }
-
     }
 
     private drawVerticalSeparations(pentatonic: Pentatonic) {
@@ -199,5 +199,21 @@ export class Playground {
                 }
             }
         }
+    }
+
+    private drawAllClues(pentatonic: Pentatonic) {
+        pentatonic.cellArray().filter(cell => cell.values.length == 1 || pentatonic.sistersHave(cell.position))
+            .forEach(c => {
+                if (c.values.length == 1) {
+                    this.writeText(c.values[0], this.offsetX + c.position.j * this.cellSize + this.cellSize / 3,
+                        this.offsetY + c.position.i * this.cellSize + this.cellSize * 3 / 5);
+                }
+                if (pentatonic.sistersHave(c.position)) {
+                    this.writeText(pentatonic.getSisterSymbol(c.position),
+                        this.offsetX + c.position.j * this.cellSize + 0.2 * this.cellSize,
+                        this.offsetY + c.position.i * this.cellSize + 0.2 * this.cellSize, this.styles.font.Default);
+                }
+            });
+
     }
 }

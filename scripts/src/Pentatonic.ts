@@ -2,6 +2,7 @@ import {Cell} from "./Cell";
 import {Area} from "./area";
 import {Diff} from "./diff";
 import {Sister} from "./sister";
+import {Position} from "./position";
 
 export class Pentatonic {
     id: number = 0;
@@ -33,7 +34,7 @@ export class Pentatonic {
         })
     }
 
-    private cellArray(): Array<Cell> {
+    public cellArray(): Array<Cell> {
         let res: Array<Cell> = [];
         for (let row of this.cells) {
             for (let cell of row) {
@@ -56,5 +57,26 @@ export class Pentatonic {
     private getAreaCells(area: Area): Set<Cell> {
         return new Set(this.cellArray().filter(c => c.area.id == area.id));
 
+    }
+
+    public diffOnesHave(position: Position): boolean {
+        for (let diff of this.diffOnes) {
+            if (diff.position1 == position || diff.position2 == position) return true;
+        }
+        return false;
+    }
+
+    public sistersHave(position: Position): boolean {
+        for (let sis of this.sisters) {
+            if (sis.positions.indexOf(position) != -1) return true;
+        }
+        return false;
+    }
+
+    getSisterSymbol(position: Position): string {
+        for (let sis of this.sisters) {
+            if (sis.positions.indexOf(position) > -1) return sis.symbol;
+        }
+        return "";
     }
 }

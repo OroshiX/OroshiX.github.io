@@ -43,8 +43,9 @@ export class Serializer {
     static fillAreas(penta: PentaWarningError, lines: Array<string>, startLine: number) {
         let mapAreas: { [key: string]: Area } = {};
         let line: string;
-        for (let i = startLine; i < startLine + penta.penta.lines; i++) {
-            line = lines[i].trim();
+        for (let index = startLine; index < startLine + penta.penta.lines; index++) {
+            let i = index - startLine;
+            line = lines[index].trim();
             if (line == "" || line == null) {
                 continue;
             }
