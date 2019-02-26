@@ -68,11 +68,24 @@ export class Playground {
         this.context.beginPath();
         this.context.lineWidth = this.styles.borderWidth;
         this.context.fillStyle = this.styles.borderColor;
+        this.context.strokeStyle = this.styles.borderColor;
         this.context.moveTo(x1, y1);
         this.context.lineTo(x2, y2);
         this.context.stroke();
         this.context.fill();
     }
+
+    drawDiffLine(x1: number,y1: number, x2: number, y2: number) {
+        this.context.beginPath();
+        this.context.lineWidth = this.styles.diffWidth;
+        this.context.fillStyle = this.styles.diffColor;
+        this.context.strokeStyle = this.styles.diffColor;
+        this.context.moveTo(x1, y1);
+        this.context.lineTo(x2, y2);
+        this.context.stroke();
+        this.context.fill();
+    }
+
 
     drawArrowLine(x1: number, y1: number, x2: number, y2: number, isReverseArrow = false) {
         let i;
@@ -235,9 +248,53 @@ export class Playground {
                     yStart = 2 * yArray[0] - yArray[1];
                     yEnd = yArray[1];
                     break;
-
-
+                case RelativePosition.RIGHT:
+                    xStart = 2 * xArray[4] - xArray[3];
+                    xEnd = xArray[3];
+                    yStart = yArray[2];
+                    yEnd = yArray[2];
+                    break;
+                case RelativePosition.BOTTOM:
+                    xStart = xArray[2];
+                    xEnd = xArray[2];
+                    yStart = 2 * yArray[4] - yArray[3];
+                    yEnd = yArray[3];
+                    break;
+                case  RelativePosition.LEFT:
+                    xStart = 2 * xArray[0] - xArray[1];
+                    xEnd = xArray[1];
+                    yStart = yArray[2];
+                    yEnd = yArray[2];
+                    break;
+                case RelativePosition.TOP_RIGHT:
+                    xStart = 2 * xArray[4] - xArray[3];
+                    xEnd = xArray[3];
+                    yStart = 2 * yArray[0] - yArray[1];
+                    yEnd = yArray[1];
+                    break;
+                case RelativePosition.BOTTOM_RIGHT:
+                    xStart = 2 * xArray[4] - xArray[3];
+                    xEnd = xArray[3];
+                    yStart = 2 * yArray[4] - yArray[3];
+                    yEnd = yArray[3];
+                    break;
+                case RelativePosition.BOTTOM_LEFT:
+                    xStart = 2 * xArray[0] - xArray[1];
+                    xEnd = xArray[1];
+                    yStart = 2 * yArray[4] - yArray[3];
+                    yEnd = yArray[3];
+                    break;
+                case RelativePosition.TOP_LEFT:
+                    xStart = 2 * xArray[0] - xArray[1];
+                    xEnd = xArray[1];
+                    yStart = 2 * yArray[0] - yArray[1];
+                    yEnd = yArray[1];
+                    break;
+                case RelativePosition.ILLEGAL:
+                    console.log("Illegal position");
+                    return;
             }
+            this.drawDiffLine(xStart, yStart, xEnd, yEnd);
         })
     }
 }
