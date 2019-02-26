@@ -16,7 +16,8 @@ export class Playground {
 
     constructor(canvasElement: HTMLCanvasElement, context: CanvasRenderingContext2D, styles: Styles) {
         this.canvasElement = canvasElement;
-        this.totalWidth = this.canvasElement.width;
+        this.totalWidth = this.canvasElement.parentElement.getBoundingClientRect().width;
+        this.canvasElement.setAttribute("width", this.totalWidth.toString());
 
         this.context = context;
         this.styles = styles;
@@ -25,15 +26,6 @@ export class Playground {
         this.canvasElement.style.margin = "auto 20px";
         this.canvasElement.style.background = this.styles.background;
 
-    }
-
-    setGroundStyles(): void {
-        console.log("Width is " + this.totalWidth);
-        // this.canvasElement.setAttribute("width", "500");
-        // this.canvasElement.setAttribute("height", "500");
-        this.canvasElement.style.border = this.styles.borderWidth + "px solid " + this.styles.borderColor;
-        this.canvasElement.style.margin = "auto 25px";
-        this.canvasElement.style.background = this.styles.background;
     }
 
     drawCenterSpot(xAxis: number, yAxis: number, radius: number) {
@@ -189,13 +181,10 @@ export class Playground {
         for (let i = 0; i < pentatonic.lines; i++) {
             for (let j = 1; j < pentatonic.columns; j++) {
                 if (pentatonic.cells[i][j].area.id != pentatonic.cells[i][j - 1].area.id) {
-                    console.log("(" + i + "," + (j - 1) + ") et (" + i + "," + j + ") ne sont PAS dans la meme zone ");
                     this.drawLine(this.offsetX + j * this.cellSize,
                         this.offsetY + i * this.cellSize,
                         this.offsetX + j * this.cellSize,
                         this.offsetY + (i + 1) * this.cellSize);
-                } else {
-                    console.log("(" + i + "," + (j - 1) + ") et (" + i + "," + j + ") SONT dans la meme zone ");
                 }
             }
 
@@ -233,9 +222,10 @@ export class Playground {
     }
 
     private drawDiffOnes(pentatonic: Pentatonic) {
-        let xArray: number[] = [];
-        let yArray: number[] = [];
         pentatonic.diffOnes.forEach(diffOne => {
+            let xArray: number[] = [];
+            let yArray: number[] = [];
+
             for (let k = 0; k < 5; k++) {
                 xArray.push(this.offsetX + diffOne.position1.j * this.cellSize + (this.cellSize * k) / 4);
                 yArray.push(this.offsetY + diffOne.position1.i * this.cellSize + (this.cellSize * k) / 4);

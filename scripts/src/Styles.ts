@@ -28,7 +28,7 @@ export class Styles {
         this.textColor = "#d62061";
         this.lineColor = "#6dc2ff";
         this.diffColor = "#ff2955";
-        this.font = {Default: "12px 'Segoe UI',Arial,sans-serif", Heading: "34px 'Segoe UI',Arial,sans-serif"};
+        this.font = {Default: "27px 'Segoe UI',Arial,sans-serif", Heading: "44px 'Segoe UI',Arial,sans-serif"};
     }
 
 }

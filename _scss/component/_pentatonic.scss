@@ -3,6 +3,10 @@
   .panel-left {
     flex: 50%;
   }
+  #text-penta {
+    font-family: monospace;
+    line-height: normal;
+  }
   .panel-right {
     flex: 50%;
   }
@@ -14,7 +18,7 @@
   #warnings {
     color: #df8000;
   }
-  #success{
+  #success {
     color: #0c8d3a;
   }
 }
