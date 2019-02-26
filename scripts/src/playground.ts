@@ -75,7 +75,7 @@ export class Playground {
         this.context.fill();
     }
 
-    drawDiffLine(x1: number,y1: number, x2: number, y2: number) {
+    drawDiffLine(x1: number, y1: number, x2: number, y2: number) {
         this.context.beginPath();
         this.context.lineWidth = this.styles.diffWidth;
         this.context.fillStyle = this.styles.diffColor;
@@ -145,9 +145,9 @@ export class Playground {
 
     drawRectangleBorderLine(xAxis: number, yAxis: number, width: number, height: number) {
         this.context.beginPath();
-        this.context.fillStyle = this.styles.fillColor;
-        this.context.fill();
-        this.context.fillRect(xAxis, yAxis, width, height);
+        // this.context.fillStyle = this.styles.fillColor;
+        // this.context.fill();
+        // this.context.fillRect(xAxis, yAxis, width, height);
         this.context.lineWidth = this.styles.borderWidth;
         this.context.strokeStyle = this.styles.borderColor;
         this.context.strokeRect(xAxis, yAxis, width, height);
@@ -177,12 +177,12 @@ export class Playground {
     }
 
     private drawEachCell(pentatonic: Pentatonic) {
-        this.drawRectangleBorderLine(this.offsetX, this.offsetY, pentatonic.columns * this.cellSize, pentatonic.lines * this.cellSize);
         for (let i = 0; i < pentatonic.lines; i++) {
             for (let j = 0; j < pentatonic.columns; j++) {
                 this.drawRectangleThinLine(this.offsetX + j * this.cellSize, this.offsetY + i * this.cellSize, this.cellSize, this.cellSize);
             }
         }
+        this.drawRectangleBorderLine(this.offsetX, this.offsetY, pentatonic.columns * this.cellSize, pentatonic.lines * this.cellSize);
     }
 
     private drawVerticalSeparations(pentatonic: Pentatonic) {
@@ -194,7 +194,7 @@ export class Playground {
                         this.offsetY + i * this.cellSize,
                         this.offsetX + j * this.cellSize,
                         this.offsetY + (i + 1) * this.cellSize);
-                }else {
+                } else {
                     console.log("(" + i + "," + (j - 1) + ") et (" + i + "," + j + ") SONT dans la meme zone ");
                 }
             }
