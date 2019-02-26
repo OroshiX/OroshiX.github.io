@@ -214,7 +214,7 @@ export class Playground {
                 if (pentatonic.sistersHave(c.position)) {
                     this.writeText(pentatonic.getSisterSymbol(c.position),
                         this.offsetX + c.position.j * this.cellSize + 0.2 * this.cellSize,
-                        this.offsetY + c.position.i * this.cellSize + 0.2 * this.cellSize, this.styles.font.Default);
+                        this.offsetY + c.position.i * this.cellSize + 0.4 * this.cellSize, this.styles.font.Default, this.styles.sisterColor);
                 }
             });
         this.drawDiffOnes(pentatonic);

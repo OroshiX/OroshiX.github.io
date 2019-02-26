@@ -13,6 +13,7 @@ export class Styles {
     font: { Default: string, Heading: string };
     diffColor: string;
     diffWidth: number;
+    sisterColor: string;
 
     constructor(width: number, height: number) {
         this.widthCell = width;
@@ -28,6 +29,7 @@ export class Styles {
         this.textColor = "#d62061";
         this.lineColor = "#6dc2ff";
         this.diffColor = "#ff2955";
+        this.sisterColor = "#339bcb";
         this.font = {Default: "27px 'Segoe UI',Arial,sans-serif", Heading: "44px 'Segoe UI',Arial,sans-serif"};
     }
 
