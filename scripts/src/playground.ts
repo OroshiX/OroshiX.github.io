@@ -1,6 +1,7 @@
 import {Styles} from "./Styles";
 import {PentaWarningError} from "./PentaWarningError";
 import {Pentatonic} from "./Pentatonic";
+import {RelativePosition} from "./relativePosition";
 
 export class Playground {
     private canvasElement: HTMLCanvasElement;
@@ -214,6 +215,29 @@ export class Playground {
                         this.offsetY + c.position.i * this.cellSize + 0.2 * this.cellSize, this.styles.font.Default);
                 }
             });
+        this.drawDiffOnes(pentatonic);
 
+    }
+
+    private drawDiffOnes(pentatonic: Pentatonic) {
+        let xArray: number[] = [];
+        let yArray: number[] = [];
+        pentatonic.diffOnes.forEach(diffOne => {
+            for (let k = 0; k < 5; k++) {
+                xArray.push(this.offsetX + diffOne.position1.j * this.cellSize + (this.cellSize * k) / 4);
+                yArray.push(this.offsetY + diffOne.position1.i * this.cellSize + (this.cellSize * k) / 4);
+            }
+            let xStart, xEnd, yStart, yEnd: number;
+            switch (diffOne.position1.getPositionRelativeToMe(diffOne.position2)) {
+                case RelativePosition.TOP:
+                    xStart = xArray[2];
+                    xEnd = xArray[2];
+                    yStart = 2 * yArray[0] - yArray[1];
+                    yEnd = yArray[1];
+                    break;
+
+
+            }
+        })
     }
 }
