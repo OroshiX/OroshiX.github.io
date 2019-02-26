@@ -6,6 +6,8 @@ export class Styles {
     lineColor: string;
     lineWidth: number;
     borderWidth: number;
+    canvasBorderWidth: number;
+    canvasBorderColor: string;
     fillColor: string;
     textColor: string;
     font: { Default: string, Heading: string };
@@ -15,8 +17,10 @@ export class Styles {
     constructor(width: number, height: number) {
         this.widthCell = width;
         this.heightCell = height;
-        this.background = "#9a2424";
+        this.background = "#fff5ea";
         this.borderColor = "#343653";
+        this.canvasBorderColor ="#ae0066";
+        this.canvasBorderWidth = 1;
         this.lineWidth = 2;
         this.borderWidth = 10;
         this.diffWidth = 5;

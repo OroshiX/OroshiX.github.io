@@ -68,14 +68,14 @@ export class Pentatonic {
 
     public sistersHave(position: Position): boolean {
         for (let sis of this.sisters) {
-            if (sis.positions.indexOf(position) != -1) return true;
+            if (sis.positions.filter(pos => pos.i == position.i && pos.j == position.j).length > 0) return true;
         }
         return false;
     }
 
     getSisterSymbol(position: Position): string {
         for (let sis of this.sisters) {
-            if (sis.positions.indexOf(position) > -1) return sis.symbol;
+            if (sis.positions.filter(pos => pos.i == position.i && pos.j == position.j).length > 0) return sis.symbol;
         }
         return "";
     }

@@ -21,8 +21,8 @@ export class Playground {
         this.context = context;
         this.styles = styles;
 
-        this.canvasElement.style.border = this.styles.borderWidth + "px solid " + this.styles.borderColor;
-        this.canvasElement.style.margin = "auto 25px";
+        this.canvasElement.style.border = this.styles.canvasBorderWidth + "px solid " + this.styles.canvasBorderColor;
+        this.canvasElement.style.margin = "auto 20px";
         this.canvasElement.style.background = this.styles.background;
 
     }
