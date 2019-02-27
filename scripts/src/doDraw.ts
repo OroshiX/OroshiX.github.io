@@ -42,6 +42,10 @@ window.onload = function () {
     buttonVisualise.onclick = visualise;
     buttonConvert.onclick = () => {
         let penta = visualise();
+        if (penta.hasWarningsOrErrors()) {
+            alert("Please fix any errors and warnings before converting to JSON");
+            return;
+        }
         let pentaJson = PentaJson.fromPentatonic(penta.penta);
         let jsonString = JSON.stringify(pentaJson);
         download(pentaJson.name + ".json", jsonString);

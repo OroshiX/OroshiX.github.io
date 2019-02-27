@@ -2,6 +2,12 @@
   display: flex;
   .panel-left {
     flex: 50%;
+    label {
+      font-weight: bold;
+    }
+    input {
+      margin: 10px;
+    }
   }
   #text-penta {
     font-family: monospace;

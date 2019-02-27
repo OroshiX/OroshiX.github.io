@@ -23,4 +23,7 @@ export class PentaWarningError {
         this.errors.push(error);
     }
 
+    public hasWarningsOrErrors() {
+        return this.warnings.length > 0 || this.errors.length > 0;
+    }
 }
