@@ -51,7 +51,7 @@ export class Pentatonic {
         return res;
     }
 
-    private getAllAreas(): Set<Area> {
+    public getAllAreas(): Set<Area> {
         let set: Set<Area> = new Set();
         let merge: Array<Cell> = this.cellArray();
 
@@ -63,7 +63,10 @@ export class Pentatonic {
 
     private getAreaCells(area: Area): Set<Cell> {
         return new Set(this.cellArray().filter(c => c.area.id == area.id));
+    }
 
+    public getAreaPositions(area: Area): Set<Position> {
+        return new Set<Position>(this.cellArray().filter(c => c.area.id == area.id).map(cell => cell.position));
     }
 
     public diffOnesHave(position: Position): boolean {
