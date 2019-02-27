@@ -16,6 +16,7 @@ export class Pentatonic {
     cells: Array<Array<Cell>>;
     diffOnes: Array<Diff>;
     sisters: Array<Sister>;
+    private MAX_AREA_SIZE: number = 5;
 
     constructor(lines: number = 0, columns: number = 0) {
         this.lines = lines;
@@ -25,13 +26,19 @@ export class Pentatonic {
         this.sisters = [];
     }
 
-    fillAreaSize() {
+    fillAreaSize(): Array<string> {
+        let warnings: Array<string> = [];
         let allAreas = this.getAllAreas();
         allAreas.forEach(area => {
             let areaCells: Set<Cell> = this.getAreaCells(area);
             let size = areaCells.size;
             areaCells.forEach(c => c.area.size = size);
-        })
+            if (size > this.MAX_AREA_SIZE) {
+                warnings.push(
+                    "Area with id " + area.id + " is bigger than the max (" + size + " > " + this.MAX_AREA_SIZE + ")");
+            }
+        });
+        return warnings;
     }
 
     public cellArray(): Array<Cell> {

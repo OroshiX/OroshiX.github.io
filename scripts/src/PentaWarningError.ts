@@ -15,6 +15,10 @@ export class PentaWarningError {
         this.warnings.push(warn);
     }
 
+    public addWarnings(warnings: Array<string>) {
+        warnings.forEach(warn => this.addWarning(warn));
+    }
+
     public addError(error: string) {
         this.errors.push(error);
     }

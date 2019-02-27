@@ -25,7 +25,7 @@ export class Serializer {
         console.log("We have lineCol: " + lineCol);
         if (lineCol.length != 2) {
             pentaWarningError.addError(
-                "2nd line should provide nb of lines and columns like this \"\<nbLines> \<nbCols>\"");
+                "2nd line should provide nb of lines and columns like this \"nbLines nbCols\"");
             return pentaWarningError;
         }
         penta.lines = lineCol[0];
@@ -34,7 +34,9 @@ export class Serializer {
             pentaWarningError.addError("You didn't provide a pentatonic with " + penta.lines + " lines");
             return pentaWarningError;
         }
+
         this.fillAreas(pentaWarningError, lines, 2);
+        if (pentaWarningError.errors.length > 0) return pentaWarningError;
         this.fillEnonce(pentaWarningError, lines, 2 + penta.lines);
 
         return pentaWarningError;
@@ -51,20 +53,13 @@ export class Serializer {
             }
             let lineCells = [];
             if(line.length != penta.penta.columns) {
-                penta.addWarning("Check the number of cells for this line: "+line);
+                penta.addError(
+                    "Mismatch between number of columns (" + penta.penta.columns +
+                    ") and the size of the line\"" + line + "\" (cf. line number " + (index + 1) + ")");
+                break;
             }
 
             for (let j = 0; j < penta.penta.columns; j++) {
-                if(line.length <= j) {
-                    penta.addError("Please check the number of columns you provided fo each line of the pentatonic " +
-                        "(index" + j + ">=" + penta.penta.columns + ": for the line " + line + ")");
-                    break;
-                }
-                if (j > penta.penta.columns) {
-                    penta.addError("Please check the number of columns you provided fo each line of the pentatonic " +
-                        "(" + j + ">" + penta.penta.columns + ")");
-                    break;
-                }
                 let cell = new Cell(i, j);
                 let area = mapAreas[line[j]];
                 if (area == null) {
@@ -76,7 +71,8 @@ export class Serializer {
             }
             penta.penta.cells.push(lineCells);
         }
-        penta.penta.fillAreaSize();
+        let warnings = penta.penta.fillAreaSize();
+        penta.addWarnings(warnings);
     }
 
     static fillEnonce(penta: PentaWarningError, lines: Array<string>, startLine: number) {
@@ -93,7 +89,7 @@ export class Serializer {
                 let lineCols = line.substr(1).split(",").map(n => +n);
                 if (lineCols.length != 4) {
                     penta.addError("For a diffOne, you should have 4 numbers: \"-i1,j1,i2,j2\" for example. But you typed \"" + line + "\"");
-                    continue;
+                    break;
                 }
                 let pos1 = new Position(lineCols[0], lineCols[1]);
                 let pos2 = new Position(lineCols[2], lineCols[3]);
@@ -120,6 +116,16 @@ export class Serializer {
             let nb = split[0];
             let nLine = +split[1];
             let nCol = +split[2];
+            if (nLine >= penta.penta.lines) {
+                penta.addError(
+                    "Line i = " + nLine + " is out of bounds in \"" + line + "\": number of lines = " + penta.penta.lines + " (cf. line " + (i + 1) + ")");
+                continue;
+            }
+            if (nCol >= penta.penta.columns) {
+                penta.addError(
+                    "Column j = " + nCol + " is out of bounds in \"" + line + "\": number of columns = " + penta.penta.columns + " (cf. line " + (i + 1) + ")");
+                continue;
+            }
             let cell = penta.penta.cells[nLine][nCol];
             let n: number = +nb;
             if (!Number.isNaN(n)) {

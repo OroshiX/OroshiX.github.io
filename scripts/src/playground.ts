@@ -145,12 +145,24 @@ export class Playground {
         this.context.strokeRect(xAxis, yAxis, width, height);
     }
 
+
     drawPentatonic(pentaWarningError: PentaWarningError, errors: Node, warnings: Node, success: Node) {
         console.log("trying to draw: ", pentaWarningError);
         console.log("errors: " + pentaWarningError.errors);
         console.log("Warnings: " + pentaWarningError.warnings);
-        errors.textContent = pentaWarningError.errors.join("<br>");
-        warnings.textContent = pentaWarningError.warnings.join("<br>");
+
+        let t: HTMLDivElement = <HTMLDivElement>errors;
+        if (pentaWarningError.errors.length > 0) {
+            t.innerHTML = "<ul><li>" + pentaWarningError.errors.join("</li><li>") + "</li></ul>";
+        } else {
+            t.innerText = "";
+        }
+        if (pentaWarningError.warnings.length > 0) {
+            (<HTMLDivElement>warnings).innerHTML =
+                "<ul><li>" + pentaWarningError.warnings.join("</li><li>") + "</li></ul>";
+        } else {
+            warnings.textContent = "";
+        }
         if (pentaWarningError.errors.length == 0 && pentaWarningError.warnings.length == 0) {
             success.textContent = "Success!";
         } else {
@@ -162,7 +174,7 @@ export class Playground {
         this.canvasElement.setAttribute("height", heightCanvas.toString());
 
         this.drawEachCell(pentatonic);
-        // TODO draw penta
+        if (pentaWarningError.errors.length > 0) return;
         this.drawVerticalSeparations(pentatonic);
         this.drawHorizontalSeparations(pentatonic);
         this.drawAllClues(pentatonic);
