@@ -20,6 +20,10 @@ export class Position {
         return true;
     }
 
+    isAdjacent(pos: Position): boolean {
+        return Math.abs(pos.i - this.i) + Math.abs(pos.j - this.j) == 1;
+    }
+
     getPositionRelativeToMe(position: Position): RelativePosition {
         if (!position.isNear(this)) {
             return RelativePosition.ILLEGAL;
