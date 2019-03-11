@@ -6,8 +6,11 @@ title: Pentatonic editor
 <script src="../scripts/dist/bundle.js"></script>
 
 
-<div id="DrawingBoard" style="padding-top:25px;text-align:center" class="three-columns">
-    <div class="panel-left" id="penta-text">
+<div id="DrawingBoard" style="padding-top:25px;text-align:center" class="container">
+    <div class="col-12 col-md-6" id="penta-text">
+        <input type="button" id="btn-visualise" value="Visualise only"/>
+        <input type="button" id="btn-convert" value="Convert to JSON">
+        <br/>
         <label for="title-input">Title</label><input type="text" value="Title" id="title-input"><br/>
         <label for="difficulty-input">Difficulty</label><input type="number" value="1" id="difficulty-input">
         <textarea type="text" title="penta" id="text-penta" rows="18" cols="40">MonsieurO
@@ -19,11 +22,8 @@ ccb
 a,1,2
 a,2,2
 -1,2,1,1</textarea>
-        <br/>
-        <input type="button" id="btn-visualise" value="Visualise only"/>
-        <input type="button" id="btn-convert" value="Convert to JSON">
     </div>
-    <div class="panel-right">
+    <div class="col-12 col-md-6" id="penta-div">
         <div id="errors">
 
         </div>
