@@ -16,14 +16,14 @@ export class Playground {
 
     constructor(canvasElement: HTMLCanvasElement, context: CanvasRenderingContext2D, styles: Styles) {
         this.canvasElement = canvasElement;
-        this.totalWidth = this.canvasElement.parentElement.getBoundingClientRect().width;
+        this.totalWidth = this.canvasElement.parentElement.getBoundingClientRect().width-1;
         this.canvasElement.setAttribute("width", this.totalWidth.toString());
 
         this.context = context;
         this.styles = styles;
 
         this.canvasElement.style.border = this.styles.canvasBorderWidth + "px solid " + this.styles.canvasBorderColor;
-        this.canvasElement.style.margin = "auto 20px";
+//        this.canvasElement.style.margin = "auto 20px";
         this.canvasElement.style.background = this.styles.background;
 
     }

@@ -1,30 +1,33 @@
-.three-columns {
-  display: flex;
-  .panel-left {
-    flex: 50%;
+#DrawingBoard {
+  #penta-text {
     label {
       font-weight: bold;
     }
     input {
       margin: 10px;
     }
+
+    #text-penta {
+      font-family: monospace;
+      line-height: normal;
+    }
   }
-  #text-penta {
-    font-family: monospace;
-    line-height: normal;
-  }
-  .panel-right {
-    flex: 50%;
-  }
-  #penta-representation {
-  }
-  #errors {
-    color: #9f0800;
-  }
-  #warnings {
-    color: #df8000;
-  }
-  #success {
-    color: #0c8d3a;
+  #penta-div {
+    padding: 0 !important;
+    margin: 0 !important;
+    #penta-representation {
+    }
+
+    #errors {
+      color: #9f0800;
+    }
+
+    #warnings {
+      color: #df8000;
+    }
+
+    #success {
+      color: #0c8d3a;
+    }
   }
 }
