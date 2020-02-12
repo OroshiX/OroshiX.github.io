@@ -57,6 +57,8 @@ nav:
     - '/about/'
   Projects:
     - '/projects'
+  Scores:
+    - '/scores'
   Github Project:
     - 'https://github.com/OroshiX/OroshiX.github.io'
 
