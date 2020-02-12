@@ -1,4 +1,10 @@
 projects:
+  - name: "Company presentation"
+    id: 9
+    description: "Developed a flutter cross-platform app (iOS and Android tablets, and web), for the purpose of presenting the company to future employees during the interview process"
+    pro: true
+    tags:
+      - name: flutter
   - name: "Upside Dark"
     id: 8
     description: "With a newly formed team of formerly strangers, designed and developed a game in 48 hours, inspired by a specific theme"
