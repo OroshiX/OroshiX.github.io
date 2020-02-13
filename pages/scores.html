@@ -1,8 +1,15 @@
 ---
 permalink: /scores/
-layout: score
+layout: page
 title: Scores
 ---
-T: Cooley's
-M:4/4
-|:D2:EBBA B2 EB|DEFD E2:|
+
+<ul>
+    {% for score in site.scores %}
+    <li>
+        <h2><a href="{{score.url}}"> {{ score.title}}</a></h2>
+        <p>{{ score.description}}</p>
+        <a href="{{ score.link}}">{{ score.link}}</a>
+    </li>
+    {% endfor %}
+</ul>

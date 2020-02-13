@@ -1,7 +1,7 @@
 ---
 layout: page-larger
 ---
-{% capture myTune %}{{content | newline_to_br | strip_newlines | replace: "<br />", "\n"}}{% endcapture %}
+{% capture myTune %}{{content | newline_to_br | strip_newlines | replace: "<br />", "\n" | replace: '"', '\"'}}{% endcapture %}
 <div class="page">
     <h2>Music</h2>
     <a href="{{page.link}}">{{page.link}}</a>

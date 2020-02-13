@@ -65,6 +65,9 @@ nav:
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
+collections:
+  scores:
+    output: true
 
 disqus_short_name: 'oroshix' # leave blank if you don't want disqus
 
