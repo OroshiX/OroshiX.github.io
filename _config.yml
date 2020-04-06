@@ -57,6 +57,10 @@ nav:
     - '/about/'
   Projects:
     - '/projects'
+  Wiki:
+    - '/#'
+    - { Flutter: '/summary' }
+    - { Android: '/android-summary' }
   Github Project:
     - 'https://github.com/OroshiX/OroshiX.github.io'
 
