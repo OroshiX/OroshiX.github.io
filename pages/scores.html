@@ -1,0 +1,15 @@
+---
+permalink: /scores/
+layout: page
+title: Scores
+---
+
+<ul>
+    {% for score in site.scores %}
+    <li>
+        <h2><a href="{{score.url}}"> {{ score.title}}</a></h2>
+        <p>{{ score.description}}</p>
+        <a href="{{ score.link}}">{{ score.link}}</a>
+    </li>
+    {% endfor %}
+</ul>

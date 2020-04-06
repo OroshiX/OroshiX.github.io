@@ -1,4 +1,7 @@
 programming:
+  - name: Android
+    code: android
+    percent: 98
   - name: Java
     code: java
     percent: 95
@@ -8,9 +11,9 @@ programming:
   - name: Angular
     code: angular
     percent: 60
-  - name: Android
-    code: android
-    percent: 98
+  - name: Flutter
+    code: flutter
+    percent: 50
 
 language:
   - name: French
