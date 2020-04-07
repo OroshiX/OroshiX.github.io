@@ -1,17 +1,19 @@
 ---
 title: Flutter
 layout: page
-permalink: /summary/
+permalink: /flutter/
 ---
 You'll find here some of the concepts that I found worth writing about with flutter.
 
-## General
+## Start
     
-* [Start with the commands](/commands)
+* [First commands](/commands)
 * [Source code](/sources)
-* [Deploy](/deploy)
 * [Flutter syntax](/syntax)
-* [Best practices](/best-practices)
+* [Deploy](/deploy)
+
+## Nav
+* [Navigation](/navigation)
 
 ## Pattern
 * [BLoC pattern](/bloc)
@@ -22,3 +24,6 @@ You'll find here some of the concepts that I found worth writing about with flut
 ## Interesting widgets
 * [Lists views and lists](/lists)
 * [StreamBuilder](/stream-builder)
+
+## Others
+* [Best practices](/best-practices)

@@ -3,6 +3,9 @@ layout: page
 title: Best Practices
 permalink: /best-practices
 ---
+**Content**
+* Toc
+{:toc} 
 ## Stateful or Stateless Widgets
 
 As soon as a widget retains a state (stateful), it is given to all of its children, so if the tree is big below that widget, the performance is impacted. 

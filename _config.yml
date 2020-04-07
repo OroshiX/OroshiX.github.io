@@ -61,7 +61,7 @@ nav:
     - '/scores'
   Wiki:
     - '/#'
-    - { Flutter: '/summary' }
+    - { Flutter: '/flutter' }
     - { Android: '/android-summary' }
   Github Project:
     - 'https://github.com/OroshiX/OroshiX.github.io'

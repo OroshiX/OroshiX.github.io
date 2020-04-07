@@ -3,6 +3,9 @@ permalink: /lists
 layout: page
 title: ListViews and lists
 ---
+**Content**
+* Toc
+{:toc} 
 # ListViews
 ListViews in flutter are scrollable widgets, that can be setup to be either horizontal or vertical.  
 There are several ways of creating ListViews in flutter.
