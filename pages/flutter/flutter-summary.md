@@ -26,4 +26,5 @@ You'll find here some of the concepts that I found worth writing about with flut
 * [StreamBuilder](/stream-builder)
 
 ## Others
+* [Integrate native code](/native)
 * [Best practices](/best-practices)
