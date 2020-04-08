@@ -19,7 +19,7 @@ var app = MaterialApp(
 );
 ```
 
-And now, in our application, whenever we want to go to Screen2, we can call this method:
+So now, in our application, whenever we want to go to Screen2, we can call this method:
 ```dart
 Navigator.of(context).pushNamed("/screen2");
 ``` 
