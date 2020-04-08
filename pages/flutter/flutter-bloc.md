@@ -33,7 +33,7 @@ abstract class BlocBase {
 ```
 
 ## Init streams
-We'll initialize a few streams. First, an output stream, which is the one that will be used within our pages to display the entries.
+In our `EntriesBloc` class, we'll initialize a few streams. First, an output stream, which is the one that will be used within our pages to display the entries.
 
 ```dart
 Stream<List<InfoEntry>> infoEntries;
@@ -53,4 +53,24 @@ StreamSink<InfoEntry> get inModifyEntry => _modifyEntryController.sink;
 StreamSink<InfoEntry> get inDeleteEntry => _deleteEntryController.sink;
 ```
 
-To link the infoEntries to real database data, we can use the Moor library, because it integrates really well with streams.  
+## Link controllers to data handling
+We have to link the controllers for modifying the list of entries to a method that handles the data.
+
+```dart
+EntriesBloc() {
+  // Listens for changes to the controller and
+  // calls the method to handle data on change
+  _addEntryController.stream.listen(_handleAddEntry);
+  _modifyEntryController.stream.listen(_handleModifyEntry);
+  _deleteEntryController.stream.listen(_handleDeleteEntry);
+}
+``` 
+
+## Link data to the output stream
+To link the infoEntries to real database data, we can use the [Moor](/moor) library, because it integrates really well with streams.  
+
+So we can add something like this in the constructor:
+```dart
+infoEntries = moorDatabase.watchInfoEntries();
+```
+The stream infoEntries is linked directly to the database stream, so we can use it in a [StreamBuilder](/stream-builder) component.

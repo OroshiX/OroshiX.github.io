@@ -17,6 +17,7 @@ You'll find here some of the concepts that I found worth writing about with flut
 
 ## Pattern
 * [BLoC pattern](/bloc)
+* [Provider pattern](/provider)
 
 ## Databases
 * [Moor](/moor)
