@@ -1,5 +1,7 @@
 # Connecting IntelliJ (Windows environment) to PostgreSQL (Ubuntu for Windows: WSL 2 environment)
+How to connect them?
 
+<!-- more -->
 
 ## Create user and DB for PostgreSQL
 If the user you want to use has not been configured yet:
