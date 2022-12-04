@@ -10,7 +10,7 @@
     "source-map-loader": "^0.2.4"
   },
   "devDependencies": {
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.12",
     "webpack": "^4.29.5",
     "rimraf": "^2.6.3",
     "typescript": "^3.3.3333",
